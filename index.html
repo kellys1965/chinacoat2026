@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    /* Active Toggle Styling */
     .btn-toggle input:checked + div {
       background-color: #0f2744;
       color: #ffffff;
@@ -24,8 +23,8 @@
   <!-- TOP HEADER -->
   <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
     <div class="max-w-3xl mx-auto px-4 py-3 flex justify-between items-center">
-      <!-- Authentic Kelly's Since 1965 Logo -->
       <div class="flex items-center space-x-3">
+        <!-- Authentic Kelly's Since 1965 Logo -->
         <img src="data:image/png;base64,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" 
              alt="Kelly's Since 1965 Logo" 
              class="h-10 w-auto object-contain">
@@ -34,7 +33,6 @@
           <span class="text-[11px] text-slate-500">ChinaCoat 2026 Delegation</span>
         </div>
       </div>
-      <!-- Admin Portal Toggle Button -->
       <button id="viewSwitchBtn" onclick="togglePortal()" class="text-xs font-semibold text-slate-500 hover:text-slate-800 border border-slate-200 bg-slate-50 hover:bg-slate-100 px-3 py-1.5 rounded-lg transition">
         Admin Portal
       </button>
@@ -43,8 +41,6 @@
 
   <!-- MAIN REGISTRATION FORM -->
   <main id="formView" class="max-w-2xl mx-auto px-4 py-8 w-full">
-    
-    <!-- Title & Brief Notice -->
     <div class="mb-8 text-center sm:text-left">
       <div class="inline-block bg-blue-100 text-blue-900 text-xs font-bold px-2.5 py-1 rounded-md mb-2">
         Official Invitation & RSVP
@@ -94,13 +90,12 @@
           <span class="text-xs font-bold bg-amber-100 text-amber-900 px-2.5 py-1 rounded-md">TUE, NOV 10, 2026</span>
         </div>
 
-        <!-- Venue info -->
         <div class="text-xs bg-slate-50 p-3 rounded-lg border border-slate-200 text-slate-600 flex items-center gap-2">
           <span>📍</span>
           <span><strong>Venue:</strong> IntercityHotel Guangzhou East Railway Station</span>
         </div>
 
-        <!-- Event 1: Seminar -->
+        <!-- Seminar -->
         <div>
           <div class="flex justify-between items-baseline mb-2">
             <h3 class="text-sm font-bold text-slate-900">Digital Inkjet Seminar</h3>
@@ -120,8 +115,6 @@
               <div class="py-2.5 text-center text-xs font-medium border border-slate-200 rounded-lg transition bg-white text-slate-700 hover:bg-slate-50">Not Sure Yet</div>
             </label>
           </div>
-
-          <!-- Dynamic Seminar Attendees -->
           <div id="seminarAttendeeBlock" class="hidden mt-3 p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
             <div class="flex items-center justify-between">
               <label class="text-xs font-semibold text-slate-700">How many attendees?</label>
@@ -131,7 +124,7 @@
           </div>
         </div>
 
-        <!-- Event 2: Seminar Dinner -->
+        <!-- Dinner -->
         <div class="pt-4 border-t border-slate-100">
           <div class="flex justify-between items-baseline mb-2">
             <h3 class="text-sm font-bold text-slate-900">Post-Seminar Dinner</h3>
@@ -151,8 +144,6 @@
               <div class="py-2.5 text-center text-xs font-medium border border-slate-200 rounded-lg transition bg-white text-slate-700 hover:bg-slate-50">Not Sure Yet</div>
             </label>
           </div>
-
-          <!-- Dynamic Dinner Attendees -->
           <div id="dinnerAttendeeBlock" class="hidden mt-3 p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
             <div class="flex items-center justify-between">
               <label class="text-xs font-semibold text-slate-700">How many attendees?</label>
@@ -192,8 +183,6 @@
               <div class="py-2.5 text-center text-xs font-medium border border-slate-200 rounded-lg transition bg-white text-slate-700 hover:bg-slate-50">Not Sure Yet</div>
             </label>
           </div>
-
-          <!-- Dynamic Party Attendees -->
           <div id="partyAttendeeBlock" class="hidden mt-3 p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
             <div class="flex items-center justify-between">
               <label class="text-xs font-semibold text-slate-700">How many attendees?</label>
@@ -214,7 +203,6 @@
           <span class="text-xs font-bold bg-blue-100 text-blue-900 px-2.5 py-1 rounded-md">NOV 11 – 13, 2026</span>
         </div>
 
-        <!-- ChinaCoat Attendance -->
         <div>
           <h3 class="text-sm font-bold text-slate-900 mb-2">Will you visit the ChinaCoat exhibition?</h3>
           <div class="grid grid-cols-3 gap-2 btn-toggle">
@@ -231,8 +219,6 @@
               <div class="py-2.5 text-center text-xs font-medium border border-slate-200 rounded-lg transition bg-white text-slate-700 hover:bg-slate-50">Not Sure Yet</div>
             </label>
           </div>
-
-          <!-- Expected Visiting Dates Checkboxes -->
           <div id="chinacoatDatesWrapper" class="hidden mt-3 p-4 bg-slate-50 rounded-xl border border-slate-200">
             <label class="block text-xs font-semibold text-slate-700 mb-2">Which day(s) do you plan to visit?</label>
             <div class="flex flex-wrap gap-4 text-xs">
@@ -268,8 +254,6 @@
               <div class="py-2.5 text-center text-xs font-medium border border-slate-200 rounded-lg transition bg-white text-slate-700 hover:bg-slate-50">No, Thanks</div>
             </label>
           </div>
-
-          <!-- Dynamic VIP Codes & Names -->
           <div id="vipAttendeeBlock" class="hidden mt-3 p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
             <div class="flex items-center justify-between">
               <label class="text-xs font-semibold text-slate-700">How many VIP codes do you need?</label>
@@ -310,8 +294,6 @@
 
   <!-- ADMIN PORTAL -->
   <div id="adminView" class="hidden max-w-5xl mx-auto px-4 py-8 w-full">
-    
-    <!-- Admin Auth Box -->
     <div id="adminAuthBlock" class="max-w-xs mx-auto bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center">
       <h2 class="text-base font-bold text-slate-900 mb-1">Admin Access</h2>
       <p class="text-xs text-slate-500 mb-4">Authorized personnel only</p>
@@ -320,7 +302,6 @@
       <p id="adminAuthError" class="text-xs text-red-500 mt-2 hidden">Incorrect passcode.</p>
     </div>
 
-    <!-- Admin Content -->
     <div id="adminContent" class="hidden space-y-5">
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-200 pb-4">
         <div>
@@ -340,7 +321,6 @@
         </div>
       </div>
 
-      <!-- KPI Summary -->
       <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
         <div class="bg-white p-3.5 rounded-xl border border-slate-200">
           <span class="text-[11px] text-slate-500 font-medium">Registrations</span>
@@ -364,12 +344,10 @@
         </div>
       </div>
 
-      <!-- Search Input -->
       <div class="bg-white p-3 rounded-xl border border-slate-200">
         <input type="text" id="adminSearch" oninput="renderAdminTable()" placeholder="🔍 Search by Company, Name, or Email..." class="w-full text-xs outline-none">
       </div>
 
-      <!-- Table Section -->
       <div class="bg-white rounded-xl border border-slate-200 overflow-x-auto">
         <table class="w-full text-left text-xs text-slate-600">
           <thead class="bg-slate-50 text-slate-700 uppercase font-semibold text-[10px] tracking-wider border-b border-slate-200">
@@ -545,12 +523,12 @@
       list.unshift(record);
       saveData(list);
 
-      // Instantly transmit to Google Sheets
+      // Instantly transmit to Google Sheets using plain-text stream (bypasses CORS blocks)
       if (window.BACKEND_API_URL) {
         fetch(window.BACKEND_API_URL, {
           method: 'POST',
           mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify(record)
         }).catch(console.error);
       }
@@ -589,13 +567,12 @@
         document.getElementById('adminContent').classList.remove('hidden');
         renderAdminTable();
         updateStats();
-        syncFromCloud(); // Pull live records from Google Sheets
+        syncFromCloud();
       } else {
         document.getElementById('adminAuthError').classList.remove('hidden');
       }
     }
 
-    // Automatically synchronize records from Google Sheets to Admin View
     async function syncFromCloud() {
       if (!window.BACKEND_API_URL) return;
       try {
