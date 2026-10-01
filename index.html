@@ -203,6 +203,7 @@
           <span class="text-xs font-bold bg-blue-100 text-blue-900 px-2.5 py-1 rounded-md">NOV 11 – 13, 2026</span>
         </div>
 
+        <!-- ChinaCoat Attendance -->
         <div>
           <h3 class="text-sm font-bold text-slate-900 mb-2">Will you visit the ChinaCoat exhibition?</h3>
           <div class="grid grid-cols-3 gap-2 btn-toggle">
@@ -219,47 +220,68 @@
               <div class="py-2.5 text-center text-xs font-medium border border-slate-200 rounded-lg transition bg-white text-slate-700 hover:bg-slate-50">Not Sure Yet</div>
             </label>
           </div>
-          <div id="chinacoatDatesWrapper" class="hidden mt-3 p-4 bg-slate-50 rounded-xl border border-slate-200">
-            <label class="block text-xs font-semibold text-slate-700 mb-2">Which day(s) do you plan to visit?</label>
-            <div class="flex flex-wrap gap-4 text-xs">
-              <label class="inline-flex items-center cursor-pointer">
-                <input type="checkbox" name="chinacoatDates" value="Nov 11" class="rounded border-slate-300 text-slate-800">
-                <span class="ml-2 font-medium">Nov 11 (Wed)</span>
-              </label>
-              <label class="inline-flex items-center cursor-pointer">
-                <input type="checkbox" name="chinacoatDates" value="Nov 12" class="rounded border-slate-300 text-slate-800">
-                <span class="ml-2 font-medium">Nov 12 (Thu)</span>
-              </label>
-              <label class="inline-flex items-center cursor-pointer">
-                <input type="checkbox" name="chinacoatDates" value="Nov 13" class="rounded border-slate-300 text-slate-800">
-                <span class="ml-2 font-medium">Nov 13 (Fri)</span>
-              </label>
-            </div>
-          </div>
-        </div>
 
-        <!-- VIP Code Request -->
-        <div class="pt-4 border-t border-slate-100">
-          <div class="mb-2">
-            <h3 class="text-sm font-bold text-slate-900">ChinaCoat VIP Invitation Code (Free Admission)</h3>
-            <p class="text-xs text-slate-500">Each badge must be registered under a specific person's name</p>
-          </div>
-          <div class="grid grid-cols-2 gap-2 btn-toggle max-w-xs">
-            <label class="cursor-pointer">
-              <input type="radio" name="vipRequired" value="Required" onchange="toggleVipSection(true)" required class="sr-only">
-              <div class="py-2.5 text-center text-xs font-medium border border-slate-200 rounded-lg transition bg-white text-slate-700 hover:bg-slate-50">Yes, I Need VIP Code</div>
-            </label>
-            <label class="cursor-pointer">
-              <input type="radio" name="vipRequired" value="Not Required" onchange="toggleVipSection(false)" class="sr-only">
-              <div class="py-2.5 text-center text-xs font-medium border border-slate-200 rounded-lg transition bg-white text-slate-700 hover:bg-slate-50">No, Thanks</div>
-            </label>
-          </div>
-          <div id="vipAttendeeBlock" class="hidden mt-3 p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
-            <div class="flex items-center justify-between">
-              <label class="text-xs font-semibold text-slate-700">How many VIP codes do you need?</label>
-              <input type="number" id="vipCount" min="1" max="10" value="1" onchange="renderNameInputs('vip', this.value)" class="w-20 text-sm font-bold text-center border border-slate-300 rounded-md py-1 bg-white">
+          <!-- ChinaCoat Attendee details (Dates + Headcount + Names & Job Titles) -->
+          <div id="chinacoatOptionsWrapper" class="hidden mt-4 space-y-4">
+            
+            <!-- Visiting Dates -->
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+              <label class="block text-xs font-semibold text-slate-700 mb-2">Which day(s) do you plan to visit?</label>
+              <div class="flex flex-wrap gap-4 text-xs">
+                <label class="inline-flex items-center cursor-pointer">
+                  <input type="checkbox" name="chinacoatDates" value="Nov 11" class="rounded border-slate-300 text-slate-800">
+                  <span class="ml-2 font-medium">Nov 11 (Wed)</span>
+                </label>
+                <label class="inline-flex items-center cursor-pointer">
+                  <input type="checkbox" name="chinacoatDates" value="Nov 12" class="rounded border-slate-300 text-slate-800">
+                  <span class="ml-2 font-medium">Nov 12 (Thu)</span>
+                </label>
+                <label class="inline-flex items-center cursor-pointer">
+                  <input type="checkbox" name="chinacoatDates" value="Nov 13" class="rounded border-slate-300 text-slate-800">
+                  <span class="ml-2 font-medium">Nov 13 (Fri)</span>
+                </label>
+              </div>
             </div>
-            <div id="vipNamesContainer" class="space-y-2"></div>
+
+            <!-- Attendees Headcount & Names with Job Titles -->
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+              <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+                <div>
+                  <label class="text-xs font-bold text-slate-800">How many people will visit ChinaCoat?</label>
+                  <p class="text-[11px] text-slate-500">Please provide names and job titles for delegation reception</p>
+                </div>
+                <input type="number" id="chinacoatCount" min="1" max="10" value="1" onchange="renderChinaCoatAttendees(this.value)" class="w-20 text-sm font-bold text-center border border-slate-300 rounded-md py-1 bg-white">
+              </div>
+              <div id="chinacoatAttendeesContainer" class="space-y-2.5 pt-1"></div>
+            </div>
+
+            <!-- Then ask VIP Code -->
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+              <div class="mb-2">
+                <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wide">Do you require ChinaCoat VIP Invitation Codes (Free Admission)?</h4>
+                <p class="text-[11px] text-slate-500">Official badges for complimentary entry</p>
+              </div>
+              <div class="grid grid-cols-2 gap-2 btn-toggle max-w-xs mt-2">
+                <label class="cursor-pointer">
+                  <input type="radio" name="vipRequired" value="Required" onchange="toggleVipSection(true)" required class="sr-only">
+                  <div class="py-2 text-center text-xs font-medium border border-slate-200 rounded-lg transition bg-white text-slate-700 hover:bg-slate-50">Yes, Need VIP Code</div>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="vipRequired" value="Not Required" onchange="toggleVipSection(false)" class="sr-only">
+                  <div class="py-2 text-center text-xs font-medium border border-slate-200 rounded-lg transition bg-white text-slate-700 hover:bg-slate-50">No, Thanks</div>
+                </label>
+              </div>
+
+              <!-- Dynamic VIP Recipient Names -->
+              <div id="vipAttendeeBlock" class="hidden mt-3 pt-3 border-t border-slate-200 space-y-3">
+                <div class="flex items-center justify-between">
+                  <label class="text-xs font-semibold text-slate-700">Number of VIP codes needed:</label>
+                  <input type="number" id="vipCount" min="1" max="10" value="1" onchange="renderNameInputs('vip', this.value)" class="w-20 text-sm font-bold text-center border border-slate-300 rounded-md py-1 bg-white">
+                </div>
+                <div id="vipNamesContainer" class="space-y-2"></div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -353,10 +375,11 @@
           <thead class="bg-slate-50 text-slate-700 uppercase font-semibold text-[10px] tracking-wider border-b border-slate-200">
             <tr>
               <th class="px-4 py-3">Company & Contact</th>
+              <th class="px-4 py-3">ChinaCoat Visitors (Job Titles)</th>
+              <th class="px-4 py-3">VIP Code</th>
               <th class="px-4 py-3">Nov 10 Seminar</th>
               <th class="px-4 py-3">Nov 10 Dinner</th>
               <th class="px-4 py-3">Nov 11 Party</th>
-              <th class="px-4 py-3">ChinaCoat (VIP)</th>
               <th class="px-4 py-3">Remarks</th>
               <th class="px-4 py-3 text-right">Action</th>
             </tr>
@@ -371,7 +394,7 @@
   <div id="deleteModal" class="hidden fixed inset-0 bg-slate-900/60 z-50 flex items-center justify-center p-4">
     <div class="bg-white rounded-xl max-w-xs w-full p-5 shadow-xl text-xs">
       <h3 class="text-sm font-bold text-slate-900 mb-2">Confirm Delete</h3>
-      <p class="text-slate-600 leading-relaxed">Are you sure you want to remove this record?</p>
+      <p class="text-slate-600 leading-relaxed">Are you sure you want to remove this record from both the dashboard and Google Sheets?</p>
       <div class="my-3 p-2.5 bg-red-50 border border-red-200 rounded text-red-900">
         <div id="delCompany" class="font-bold"></div>
         <div id="delContact" class="text-slate-600 mt-0.5"></div>
@@ -388,7 +411,6 @@
   </footer>
 
   <script>
-    // --- Configurations & Connected Cloud Endpoint ---
     const ADMIN_PASSCODE = "kelly1965";
     const STORAGE_KEY = "kelly_chinacoat_2026_db";
     window.BACKEND_API_URL = "https://script.google.com/macros/s/AKfycbx9tJKq9Swr9mC41TObSsGfuP_JJC9GBHpp87hmWRmXdrjbFkJdTLwPuB75DT8bC51eAA/exec";
@@ -405,8 +427,46 @@
       updateStats();
     }
 
+    // Toggle ChinaCoat Block
     function toggleChinaCoatOptions(show) {
-      document.getElementById('chinacoatDatesWrapper').classList.toggle('hidden', !show);
+      const wrapper = document.getElementById('chinacoatOptionsWrapper');
+      wrapper.classList.toggle('hidden', !show);
+      if (show) {
+        const count = document.getElementById('chinacoatCount').value || 1;
+        renderChinaCoatAttendees(count);
+      }
+    }
+
+    // Render ChinaCoat Attendees (Name + Job Title)
+    function renderChinaCoatAttendees(count) {
+      const container = document.getElementById('chinacoatAttendeesContainer');
+      const registrantName = document.getElementById('fullName').value.trim();
+      const currentCards = Array.from(container.querySelectorAll('.cc-attendee-card'));
+      
+      let html = '';
+      const num = parseInt(count, 10) || 1;
+
+      for (let i = 1; i <= num; i++) {
+        let prevName = currentCards[i - 1]?.querySelector('.cc-name')?.value || '';
+        let prevTitle = currentCards[i - 1]?.querySelector('.cc-title')?.value || '';
+        if (i === 1 && !prevName && registrantName) prevName = registrantName;
+
+        html += `
+          <div class="cc-attendee-card grid grid-cols-1 sm:grid-cols-2 gap-2 bg-white p-2.5 rounded-lg border border-slate-200">
+            <div>
+              <span class="text-[10px] font-bold text-slate-500 uppercase">Attendee #${i} Name:</span>
+              <input type="text" class="cc-name w-full text-xs border border-slate-300 rounded px-2 py-1 outline-none bg-slate-50/50" 
+                     value="${prevName}" required placeholder="Full Name">
+            </div>
+            <div>
+              <span class="text-[10px] font-bold text-slate-500 uppercase">Job Title (職稱):</span>
+              <input type="text" class="cc-title w-full text-xs border border-slate-300 rounded px-2 py-1 outline-none bg-slate-50/50" 
+                     value="${prevTitle}" required placeholder="e.g. R&D Manager / Director">
+            </div>
+          </div>
+        `;
+      }
+      container.innerHTML = html;
     }
 
     function toggleVipSection(show) {
@@ -461,7 +521,6 @@
       container.innerHTML = html;
     }
 
-    // Auto-fill attendee #1 if user types full name
     document.getElementById('fullName').addEventListener('input', (e) => {
       ['vip', 'party', 'seminar', 'dinner'].forEach(prefix => {
         const firstInput = document.querySelector(`#${prefix}NamesContainer input`);
@@ -470,6 +529,11 @@
           firstInput.dataset.autofilled = "true";
         }
       });
+      const ccFirst = document.querySelector('#chinacoatAttendeesContainer .cc-name');
+      if (ccFirst && (!ccFirst.value || ccFirst.dataset.autofilled === "true")) {
+        ccFirst.value = e.target.value;
+        ccFirst.dataset.autofilled = "true";
+      }
     });
 
     function handleFormSubmit(e) {
@@ -480,6 +544,15 @@
 
       const chinacoatStatus = document.querySelector('input[name="chinacoatAttending"]:checked')?.value || 'Undecided';
       const chinacoatDates = Array.from(document.querySelectorAll('input[name="chinacoatDates"]:checked')).map(cb => cb.value);
+
+      let ccAttendees = [];
+      if (chinacoatStatus === 'Attending') {
+        const cards = Array.from(document.querySelectorAll('#chinacoatAttendeesContainer .cc-attendee-card'));
+        ccAttendees = cards.map(c => ({
+          name: c.querySelector('.cc-name').value.trim(),
+          title: c.querySelector('.cc-title').value.trim()
+        })).filter(a => a.name);
+      }
 
       const vipStatus = document.querySelector('input[name="vipRequired"]:checked')?.value || 'Not Required';
       let vipDetails = { status: vipStatus, count: 0, names: [] };
@@ -510,20 +583,23 @@
         name: document.getElementById('fullName').value.trim(),
         email: document.getElementById('email').value.trim(),
         country: document.getElementById('country').value.trim(),
-        chinacoat: { status: chinacoatStatus, dates: chinacoatDates },
-        vipCode: vipDetails,
-        welcomeParty: collectNames('party'),
         seminar: collectNames('seminar'),
         dinner: collectNames('dinner'),
+        welcomeParty: collectNames('party'),
+        chinacoat: { 
+          status: chinacoatStatus, 
+          dates: chinacoatDates,
+          count: ccAttendees.length,
+          attendees: ccAttendees
+        },
+        vipCode: vipDetails,
         remarks: document.getElementById('remarks').value.trim()
       };
 
-      // Save locally
       const list = getStoredData();
       list.unshift(record);
       saveData(list);
 
-      // Instantly transmit to Google Sheets using plain-text stream (bypasses CORS blocks)
       if (window.BACKEND_API_URL) {
         fetch(window.BACKEND_API_URL, {
           method: 'POST',
@@ -578,7 +654,7 @@
       try {
         const res = await fetch(window.BACKEND_API_URL);
         const cloudData = await res.json();
-        if (Array.isArray(cloudData) && cloudData.length > 0) {
+        if (Array.isArray(cloudData)) {
           saveData(cloudData);
           renderAdminTable();
         }
@@ -602,7 +678,7 @@
       let vipTotal = 0, chinaCoatCount = 0, partyTotal = 0, seminarTotal = 0, dinnerTotal = 0;
       data.forEach(item => {
         if (item.vipCode?.status === 'Required') vipTotal += (item.vipCode.count || 0);
-        if (item.chinacoat?.status === 'Attending') chinaCoatCount++;
+        if (item.chinacoat?.status === 'Attending') chinaCoatCount += (item.chinacoat.count || 1);
         if (item.welcomeParty?.status === 'Attending') partyTotal += (item.welcomeParty.count || 0);
         if (item.seminar?.status === 'Attending') seminarTotal += (item.seminar.count || 0);
         if (item.dinner?.status === 'Attending') dinnerTotal += (item.dinner.count || 0);
@@ -627,18 +703,35 @@
       );
 
       if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" class="px-4 py-8 text-center text-slate-400">No records found.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="8" class="px-4 py-8 text-center text-slate-400">No records found.</td></tr>`;
         return;
       }
 
       filtered.forEach(row => {
         const tr = document.createElement('tr');
         tr.className = "hover:bg-slate-50";
+
+        let ccDisplay = row.chinacoat?.status || 'Not Attending';
+        if (row.chinacoat?.attendeesText) {
+          ccDisplay += `<div class="text-[11px] text-slate-500 mt-0.5">• ${escapeHtml(row.chinacoat.attendeesText)}</div>`;
+        } else if (row.chinacoat?.attendees?.length) {
+          const list = row.chinacoat.attendees.map(a => `${escapeHtml(a.name)} (${escapeHtml(a.title || 'N/A')})`).join('<br>• ');
+          ccDisplay += `<div class="text-[11px] text-slate-500 mt-0.5">• ${list}</div>`;
+        }
+
         tr.innerHTML = `
           <td class="px-4 py-3 align-top">
             <div class="font-bold text-slate-900">${escapeHtml(row.company)}</div>
             <div class="text-slate-600">${escapeHtml(row.name)} &lt;${escapeHtml(row.email)}&gt;</div>
             <div class="text-[10px] text-slate-400">${escapeHtml(row.country)} • ${new Date(row.timestamp).toLocaleDateString()}</div>
+          </td>
+          <td class="px-4 py-3 align-top">
+            ${ccDisplay}
+            ${row.chinacoat?.dates?.length ? `<div class="text-[10px] text-blue-800 mt-1 font-medium">Dates: ${row.chinacoat.dates.join(', ')}</div>` : ''}
+          </td>
+          <td class="px-4 py-3 align-top">
+            <span class="text-xs text-amber-700 font-bold">${row.vipCode?.status === 'Required' ? `${row.vipCode.count} Pass(es)` : 'None'}</span>
+            ${row.vipCode?.names?.length ? `<div class="text-[11px] text-slate-500">• ${row.vipCode.names.map(escapeHtml).join('<br>• ')}</div>` : ''}
           </td>
           <td class="px-4 py-3 align-top">
             <span class="font-semibold">${row.seminar?.status}</span>
@@ -651,11 +744,6 @@
           <td class="px-4 py-3 align-top">
             <span class="font-semibold">${row.welcomeParty?.status}</span>
             ${row.welcomeParty?.names?.length ? `<div class="text-[11px] text-slate-500 mt-0.5">• ${row.welcomeParty.names.map(escapeHtml).join('<br>• ')}</div>` : ''}
-          </td>
-          <td class="px-4 py-3 align-top">
-            <div>${row.chinacoat?.status} ${row.chinacoat?.dates?.length ? `(${row.chinacoat.dates.join(', ')})` : ''}</div>
-            <div class="text-xs text-amber-700 font-bold mt-1">VIP: ${row.vipCode?.status === 'Required' ? `${row.vipCode.count} Pass(es)` : 'None'}</div>
-            ${row.vipCode?.names?.length ? `<div class="text-[11px] text-slate-500">• ${row.vipCode.names.map(escapeHtml).join('<br>• ')}</div>` : ''}
           </td>
           <td class="px-4 py-3 align-top text-slate-500 max-w-xs truncate" title="${escapeHtml(row.remarks || '')}">
             ${escapeHtml(row.remarks || '-')}
@@ -683,7 +771,19 @@
       document.getElementById('deleteModal').classList.add('hidden');
     }
 
+    // 真正執行刪除：本地過濾 + 同步叫 Google 試算表刪除那一列！
     function executeDelete(id) {
+      // 1. 同步叫 Google 試算表刪除該列
+      if (window.BACKEND_API_URL) {
+        fetch(window.BACKEND_API_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ action: 'delete', id: id })
+        }).catch(console.error);
+      }
+
+      // 2. 本地立即清除並更新畫面
       let data = getStoredData().filter(item => item.id !== id);
       saveData(data);
       closeDeleteModal();
@@ -702,30 +802,38 @@
         "Digital Inkjet Seminar", "Seminar Attendee Names",
         "Seminar Dinner", "Dinner Attendee Names",
         "Welcome Party", "Party Attendee Names",
-        "ChinaCoat Visit", "Visiting Dates",
+        "ChinaCoat Visit", "Visiting Dates", "ChinaCoat Headcount", "ChinaCoat Visitors (Title)",
         "VIP Codes", "VIP Code Recipient Names",
         "Remarks & Dietary"
       ];
 
-      const rows = data.map(item => [
-        item.id,
-        item.timestamp,
-        item.company,
-        item.name,
-        item.email,
-        item.country,
-        item.seminar?.status || '',
-        (item.seminar?.names || []).join('; '),
-        item.dinner?.status || '',
-        (item.dinner?.names || []).join('; '),
-        item.welcomeParty?.status || '',
-        (item.welcomeParty?.names || []).join('; '),
-        item.chinacoat?.status || '',
-        (item.chinacoat?.dates || []).join('; '),
-        item.vipCode?.status === 'Required' ? item.vipCode.count : 0,
-        (item.vipCode?.names || []).join('; '),
-        item.remarks || ''
-      ]);
+      const rows = data.map(item => {
+        let ccText = item.chinacoat?.attendeesText || '';
+        if (!ccText && item.chinacoat?.attendees) {
+          ccText = item.chinacoat.attendees.map(a => `${a.name} (${a.title})`).join('; ');
+        }
+        return [
+          item.id,
+          item.timestamp,
+          item.company,
+          item.name,
+          item.email,
+          item.country,
+          item.seminar?.status || '',
+          (item.seminar?.names || []).join('; '),
+          item.dinner?.status || '',
+          (item.dinner?.names || []).join('; '),
+          item.welcomeParty?.status || '',
+          (item.welcomeParty?.names || []).join('; '),
+          item.chinacoat?.status || '',
+          (item.chinacoat?.dates || []).join('; '),
+          item.chinacoat?.count || 0,
+          ccText,
+          item.vipCode?.status === 'Required' ? item.vipCode.count : 0,
+          (item.vipCode?.names || []).join('; '),
+          item.remarks || ''
+        ];
+      });
 
       const csvContent = [headers, ...rows]
         .map(row => row.map(field => `"${String(field).replace(/"/g, '""')}"`).join(','))
